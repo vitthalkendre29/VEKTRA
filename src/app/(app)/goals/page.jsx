@@ -45,15 +45,13 @@ export default function GoalsPage() {
             const pct = g.target > 0 ? Math.round((g.current / g.target) * 100) : 0;
             return (
               <div className="item-card" key={g.id}>
+                <ConfirmDeleteButton className="ic-del" onConfirm={() => remove(g.id)} />
                 <div className="ic-top">
                   <div>
                     <div className="ic-name">{g.name}</div>
                     <div className="ic-type">{g.priority} priority</div>
                   </div>
-                  <div className="ic-name">
-                    <Badge tone={pct >= 100 ? 'ok' : pct >= 50 ? 'warn' : 'danger'}>{pct}%</Badge>
-                    <ConfirmDeleteButton className="ic-del" onConfirm={() => remove(g.id)} />
-                  </div>
+                  <Badge tone={pct >= 100 ? 'ok' : pct >= 50 ? 'warn' : 'danger'}>{pct}%</Badge>
                 </div>
                 <div className="ic-amt num">{currency}{g.current.toLocaleString('en-IN')} <span style={{ fontSize: 13, color: 'var(--ink-soft)', fontWeight: 500 }}>/ {currency}{g.target.toLocaleString('en-IN')}</span></div>
                 <div className="progress-track"><div className="progress-fill" style={{ width: `${Math.min(100, pct)}%` }} /></div>

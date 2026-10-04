@@ -11,6 +11,10 @@ const ProfileSchema = new mongoose.Schema(
     monthlyIncome: { type: Number, default: 0, min: 0 },
     theme: { type: String, enum: ['light', 'dark'], default: 'light' },
     emergencyFundMonths: { type: Number, default: 6, min: 1 },
+    // 'YYYY-MM-DD' of the last day the due-bills/over-budget alert was
+    // shown. Server-side (not localStorage) so it's once-per-day across
+    // every device the user opens VEKTRA on, not once per browser.
+    lastAlertShownDate: { type: String, default: null },
   },
   { timestamps: true, collection: 'vektra_profiles' }
 );

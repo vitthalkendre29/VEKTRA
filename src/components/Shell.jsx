@@ -8,6 +8,7 @@ import { apiFetch, put } from '@/lib/fetcher';
 import { NAV_ITEMS, VIEW_TITLES } from './nav-items';
 import { useModal, useToast } from './UIProvider';
 import TransactionForm from './forms/TransactionForm';
+import AlertsGate from './AlertsGate';
 
 export default function Shell({ children, user, initialTheme }) {
   const pathname = usePathname();
@@ -44,6 +45,7 @@ export default function Shell({ children, user, initialTheme }) {
 
   return (
     <div data-theme={theme}>
+      <AlertsGate />
       <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="brand">
           <div className="brand-mark">
