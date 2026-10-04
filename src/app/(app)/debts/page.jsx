@@ -55,7 +55,7 @@ export default function DebtsPage() {
                   <div className="ic-type">{l.lender || 'Unspecified lender'}</div>
                 </div>
                 <div className="ic-actions">
-                  <ConfirmDeleteButton className="ic-del" onConfirm={async () => { await del(`/api/bills/${b.id}`); toast('Bill removed'); mutateBills(); }} />
+                  <ConfirmDeleteButton className="ic-del" onConfirm={async () => { await del(`/api/loans/${l.id}`); toast('Loan removed'); mutateBills(); }} />
                 </div>
               </div>
               <div className="ic-amt num">{currency}{l.outstanding.toLocaleString('en-IN')}</div>

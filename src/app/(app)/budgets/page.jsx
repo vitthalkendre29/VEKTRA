@@ -51,7 +51,7 @@ export default function BudgetsPage() {
                     <Badge tone={tone}>{pct}%</Badge>
                     <ConfirmDeleteButton
                       className="ic-del"
-                      onConfirm={() => remove(g.id)}
+                      onConfirm={() => remove(b.id)}
                     />
                   </div>
                 </div>

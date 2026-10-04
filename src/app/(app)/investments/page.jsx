@@ -65,7 +65,7 @@ export default function InvestmentsPage() {
                       <div className="ic-actions">
                         <ConfirmDeleteButton
                           className="ic-del"
-                          onConfirm={() => remove(g.id)}
+                          onConfirm={() => remove(h.id)}
                         />
                       </div>
                     </div>
