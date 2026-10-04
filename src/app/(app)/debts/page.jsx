@@ -49,11 +49,13 @@ export default function DebtsPage() {
         <div className="card-grid">
           {loans.map((l) => (
             <div className="item-card" key={l.id}>
-              <ConfirmDeleteButton className="ic-del" onConfirm={async () => { await del(`/api/loans/${l.id}`); toast('Loan removed'); mutateLoans(); }} />
               <div className="ic-top">
                 <div>
                   <div className="ic-name">{l.type}</div>
                   <div className="ic-type">{l.lender || 'Unspecified lender'}</div>
+                </div>
+                <div className="ic-actions">
+                  <ConfirmDeleteButton className="ic-del" onConfirm={async () => { await del(`/api/bills/${b.id}`); toast('Bill removed'); mutateBills(); }} />
                 </div>
               </div>
               <div className="ic-amt num">{currency}{l.outstanding.toLocaleString('en-IN')}</div>
@@ -67,12 +69,14 @@ export default function DebtsPage() {
       {billsLoading ? <VKLoader inline label="Loading bills" /> : !bills.length ? <EmptyState title="No bills" /> : (
         <div className="card-grid">
           {bills.map((b) => (
-            <div className="item-card" key={b.id}>
-              <ConfirmDeleteButton className="ic-del" onConfirm={async () => { await del(`/api/bills/${b.id}`); toast('Bill removed'); mutateBills(); }} />
+            <div className="item-card" key={b.id}>            
               <div className="ic-top">
                 <div>
                   <div className="ic-name">{b.name}</div>
                   <div className="ic-type">{b.frequency}</div>
+                </div>
+                <div className="ic-actions">
+                  <ConfirmDeleteButton className="ic-del" onConfirm={async () => { await del(`/api/bills/${b.id}`); toast('Bill removed'); mutateBills(); }} />
                 </div>
               </div>
               <div className="ic-amt num">{currency}{b.amount.toLocaleString('en-IN')}</div>

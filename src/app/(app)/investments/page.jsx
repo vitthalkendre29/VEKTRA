@@ -57,11 +57,16 @@ export default function InvestmentsPage() {
                 const gp = h.invested > 0 ? Math.round((g / h.invested) * 100) : 0;
                 return (
                   <div className="item-card" key={h.id}>
-                    <ConfirmDeleteButton className="ic-del" onConfirm={() => remove(h.id)} />
                     <div className="ic-top">
                       <div>
                         <div className="ic-name">{h.name}</div>
                         <div className="ic-type">{h.type}</div>
+                      </div>
+                      <div className="ic-actions">
+                        <ConfirmDeleteButton
+                          className="ic-del"
+                          onConfirm={() => remove(g.id)}
+                        />
                       </div>
                     </div>
                     <div className="ic-amt num">{currency}{h.currentValue.toLocaleString('en-IN')}</div>

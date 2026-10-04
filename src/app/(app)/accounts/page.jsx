@@ -42,13 +42,15 @@ export default function AccountsPage() {
         <div className="card-grid">
           {data.accounts.map((a) => (
             <div className="item-card" key={a.id}>
-              {!a.virtual && <ConfirmDeleteButton className="ic-del" onConfirm={() => remove(a.id)} />}
               <div className="ic-top">
                 <div>
-                  <div className="ic-name">{a.name}{a.virtual && <span className="virtual-tag">Live from Ledger</span>}</div>
-                  <div className="ic-type">{a.type.replace('_', ' ')}</div>
+                  <div className="ic-name">{a.name}</div>
+                  <div className="ic-type">{a.type.replace('_', ' ')}{a.virtual && <span className="virtual-tag">Live from Ledger</span>}</div>
                 </div>
-                {a.virtual && <Badge tone="warn">Read-only</Badge>}
+                <div className="ic-actions">
+                    {a.virtual && <Badge tone="warn">Read-only</Badge>}
+                    {!a.virtual && <ConfirmDeleteButton className="ic-del" onConfirm={() => remove(a.id)} />}
+                  </div>
               </div>
               <div className={`ic-amt num ${a.balance < 0 ? 'amt-out' : ''}`}>{currency}{Math.round(a.balance).toLocaleString('en-IN')}</div>
             </div>

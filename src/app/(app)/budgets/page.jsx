@@ -42,13 +42,18 @@ export default function BudgetsPage() {
             const tone = pct >= 100 ? 'danger' : pct >= b.alertPercent ? 'warn' : 'ok';
             return (
               <div className="item-card" key={b.id}>
-                <ConfirmDeleteButton className="ic-del" onConfirm={() => remove(b.id)} />
                 <div className="ic-top">
                   <div>
                     <div className="ic-name">{b.category}</div>
                     <div className="ic-type">Monthly</div>
                   </div>
-                  <Badge tone={tone}>{pct}%</Badge>
+                  <div className="ic-actions">
+                    <Badge tone={tone}>{pct}%</Badge>
+                    <ConfirmDeleteButton
+                      className="ic-del"
+                      onConfirm={() => remove(g.id)}
+                    />
+                  </div>
                 </div>
                 <div className="ic-amt num">{currency}{b.spent.toLocaleString('en-IN')} <span style={{ fontSize: 13, color: 'var(--ink-soft)', fontWeight: 500 }}>/ {currency}{b.amount.toLocaleString('en-IN')}</span></div>
                 <div className="progress-track"><div className="progress-fill" style={{ width: `${Math.min(100, pct)}%` }} /></div>
